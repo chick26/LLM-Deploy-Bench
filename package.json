@@ -1,0 +1,35 @@
+{
+  "name": "litellm-deploy-bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm run server\" \"npm run web\"",
+    "server": "tsx src/server/main.ts serve",
+    "web": "vite --config src/frontend/vite.config.ts --host 127.0.0.1 --port 5173",
+    "init-config": "tsx src/server/main.ts init-config",
+    "clean": "node -e \"const fs = require('node:fs'); for (const p of ['dist', 'dist-server', 'dist-test']) fs.rmSync(p, { recursive: true, force: true });\"",
+    "build:server": "tsc -p tsconfig.server.json",
+    "build": "npm run clean && npm run build:server && tsc -p src/frontend/tsconfig.json && vite build --config src/frontend/vite.config.ts",
+    "test": "node -e \"const fs = require('node:fs'); fs.rmSync('dist-test', { recursive: true, force: true });\" && tsc -p tsconfig.test.json && node --test dist-test/tests-ts/*.test.js"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.6.1",
+    "antd": "^5.22.7",
+    "dotenv": "^16.4.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.15.0",
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
+}

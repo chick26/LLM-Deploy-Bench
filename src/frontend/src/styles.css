@@ -1,0 +1,761 @@
+:root {
+  --page: #f4f7fb;
+  --panel: #ffffff;
+  --panel-soft: #f8fbfd;
+  --ink: #17212b;
+  --ink-soft: #324255;
+  --muted: #627386;
+  --line: #d9e2ec;
+  --line-strong: #c7d4e1;
+  --deep: #111a23;
+  --deep-2: #172332;
+  --accent: #00a88e;
+  --accent-soft: #e4f8f3;
+  --amber: #f0a429;
+  --amber-soft: #fff4d8;
+  --violet: #6750e8;
+  --red: #df4e5b;
+  --shadow: 0 16px 34px rgba(23, 33, 43, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(20, 40, 62, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 40, 62, 0.035) 1px, transparent 1px),
+    var(--page);
+  background-size: 28px 28px;
+}
+
+.topbar {
+  height: auto;
+  min-height: 78px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background:
+    linear-gradient(90deg, rgba(0, 168, 142, 0.12), transparent 34%),
+    var(--deep);
+  border-bottom: 1px solid #233343;
+  line-height: 1.4;
+}
+
+.brand-block {
+  min-width: 280px;
+}
+
+.brand {
+  margin: 0 0 8px !important;
+  color: #f8fbfd !important;
+  font-size: 22px !important;
+  font-weight: 720 !important;
+  letter-spacing: 0;
+}
+
+.topbar .ant-tag {
+  margin-inline-end: 0;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: #dbe7ef;
+  font-weight: 600;
+}
+
+.run-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mode-select {
+  width: 190px;
+}
+
+.run-controls .ant-select-selector,
+.run-controls .ant-btn {
+  border-radius: 8px;
+}
+
+.run-controls .ant-select-selector {
+  border-color: #2d4053 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #f4f8fb !important;
+}
+
+.run-controls .ant-select-selection-item {
+  color: #f4f8fb !important;
+  font-weight: 600;
+}
+
+.run-controls .ant-btn-default {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #edf4f7;
+}
+
+.run-controls .ant-btn-default:disabled,
+.run-controls .ant-btn-default.ant-btn-disabled,
+.run-controls .ant-btn-dangerous:disabled,
+.run-controls .ant-btn-dangerous.ant-btn-disabled {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: #8292a1;
+  box-shadow: none;
+}
+
+.run-controls .ant-select-disabled .ant-select-selector {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.run-controls .ant-select-disabled .ant-select-selection-item {
+  color: #8292a1 !important;
+}
+
+.run-controls .ant-btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 8px 18px rgba(0, 168, 142, 0.24);
+  font-weight: 700;
+}
+
+.overview-strip {
+  min-height: 56px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.overview-strip strong {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 720;
+}
+
+.overview-strip .ant-tag,
+.chart-header .ant-tag {
+  margin-inline-end: 0;
+  border-color: var(--line);
+  border-radius: 6px;
+  background: var(--panel-soft);
+  color: var(--ink-soft);
+  font-weight: 620;
+}
+
+.overview-kicker,
+.rail-kicker {
+  display: block;
+  color: var(--muted) !important;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.workspace {
+  min-height: calc(100vh - 134px);
+  background: transparent;
+}
+
+.sidebar {
+  background: rgba(236, 243, 248, 0.96) !important;
+  border-right: 1px solid var(--line);
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.content {
+  padding: 18px;
+  overflow: hidden;
+}
+
+.banner {
+  margin-bottom: 14px;
+  border-radius: 8px;
+}
+
+.metric-rail {
+  display: grid;
+  gap: 14px;
+}
+
+.rail-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.rail-heading .anticon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--accent);
+  font-size: 18px;
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+
+.rail-heading strong {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 760;
+}
+
+.metric-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.metric-tile,
+.run-card,
+.report-card,
+.signal-card,
+.workload-panel {
+  position: relative;
+  min-height: 82px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 8px 22px rgba(23, 33, 43, 0.05);
+}
+
+.metric-tile::before,
+.report-card::before,
+.signal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 8px 0 0 8px;
+  background: var(--accent);
+}
+
+.metric-tile:nth-child(2)::before,
+.report-card:nth-child(2)::before {
+  background: var(--red);
+}
+
+.metric-tile:nth-child(4)::before,
+.metric-tile:nth-child(6)::before,
+.signal-card:nth-child(2)::before,
+.signal-card:nth-child(4)::before,
+.report-card:nth-child(4)::before {
+  background: var(--amber);
+}
+
+.metric-tile:nth-child(7)::before,
+.metric-tile:nth-child(8)::before,
+.signal-card:nth-child(3)::before,
+.report-card:nth-child(3)::before {
+  background: var(--violet);
+}
+
+.metric-tile .ant-statistic-title {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.metric-tile .ant-statistic-content {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 730;
+  line-height: 1.2;
+}
+
+.metric-tile .ant-statistic-content-suffix {
+  margin-inline-start: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.run-card {
+  display: grid;
+  gap: 5px;
+  min-height: 106px;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(0, 168, 142, 0.1), rgba(103, 80, 232, 0.08)),
+    var(--panel);
+}
+
+.run-card strong {
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 760;
+}
+
+.run-card .ant-typography {
+  color: var(--muted);
+}
+
+.run-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.workload-panel {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.workload-panel-title {
+  display: grid;
+  gap: 2px;
+}
+
+.workload-panel-title strong {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 760;
+}
+
+.workload-list {
+  display: grid;
+  gap: 8px;
+}
+
+.workload-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 6px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.workload-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.workload-row > div:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.workload-row strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 760;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workload-row .ant-typography {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 620;
+}
+
+.workload-values {
+  display: grid;
+  justify-items: start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.workload-values span {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 760;
+  white-space: nowrap;
+}
+
+.workload-values .ant-typography {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workload-empty {
+  min-height: 72px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.console-panel,
+.chart-shell,
+.table-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.console-panel {
+  padding: 10px 16px 16px;
+}
+
+.console-panel .ant-tabs-nav {
+  margin-bottom: 16px;
+}
+
+.console-panel .ant-tabs-tab {
+  padding: 11px 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.console-panel .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--accent);
+}
+
+.console-panel .ant-tabs-ink-bar {
+  background: var(--accent);
+}
+
+.live-stack,
+.report-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.chart-header h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 760;
+  line-height: 1.25;
+}
+
+.chart-shell {
+  min-height: 450px;
+  padding: 18px;
+  background:
+    linear-gradient(rgba(18, 70, 105, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 70, 105, 0.04) 1px, transparent 1px),
+    var(--panel);
+  background-size: 24px 24px;
+}
+
+.chart-shell.compact {
+  min-height: 390px;
+}
+
+.throughput-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.throughput-card {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 8px 20px rgba(23, 33, 43, 0.04);
+}
+
+.throughput-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.throughput-card-header strong {
+  display: block;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 760;
+}
+
+.throughput-card-header .ant-tag {
+  margin-inline-end: 0;
+  border-color: var(--line);
+  background: var(--panel-soft);
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.signal-grid,
+.report-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.signal-card,
+.report-card {
+  display: grid;
+  gap: 6px;
+}
+
+.signal-card .ant-typography,
+.report-card .ant-typography {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.signal-card strong,
+.report-card strong {
+  color: var(--ink);
+  font-size: 25px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.signal-card span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.table-panel {
+  padding: 16px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.model-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.model-table .ant-spin-nested-loading,
+.model-table .ant-spin-container,
+.model-table .ant-table-wrapper,
+.model-table .ant-table {
+  max-width: 100%;
+}
+
+.table-panel .ant-table {
+  color: var(--ink);
+  background: var(--panel);
+  border-radius: 8px;
+}
+
+.table-panel .ant-table-container {
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.table-panel .ant-table-content,
+.table-panel .ant-table-body {
+  scrollbar-color: var(--line-strong) var(--panel-soft);
+  scrollbar-gutter: stable;
+}
+
+.table-panel .ant-table-body {
+  overflow: auto !important;
+}
+
+.table-panel .ant-table-content::-webkit-scrollbar,
+.table-panel .ant-table-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.table-panel .ant-table-content::-webkit-scrollbar-track,
+.table-panel .ant-table-body::-webkit-scrollbar-track {
+  background: var(--panel-soft);
+  border-radius: 999px;
+}
+
+.table-panel .ant-table-content::-webkit-scrollbar-thumb,
+.table-panel .ant-table-body::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 2px solid var(--panel-soft);
+  border-radius: 999px;
+}
+
+.table-panel .ant-table-cell {
+  border-color: var(--line) !important;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.table-panel .ant-table-thead > tr > th {
+  background: #edf3f8 !important;
+  color: var(--ink);
+  border-color: var(--line) !important;
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.table-panel .ant-table-tbody > tr > td {
+  background: var(--panel);
+}
+
+.table-panel .ant-table-row:hover > td {
+  background: #f6fafc !important;
+}
+
+.table-panel .ant-table-pagination {
+  margin: 12px 0 0 !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.table-panel .ant-pagination-total-text {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.table-panel .ant-pagination-item-active {
+  border-color: var(--accent);
+}
+
+.table-panel .ant-pagination-item-active a {
+  color: var(--accent);
+}
+
+.empty {
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  text-align: center;
+  font-weight: 620;
+}
+
+.artifact-bar {
+  min-height: 58px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.artifact-bar.muted {
+  color: var(--muted);
+}
+
+.artifact-bar .ok {
+  color: var(--accent);
+}
+
+.recharts-wrapper text {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.recharts-default-legend {
+  color: var(--ink-soft) !important;
+}
+
+.recharts-default-tooltip {
+  color: var(--ink) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 1120px) {
+  .signal-grid,
+  .report-cards,
+  .throughput-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar,
+  .overview-strip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .workspace {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    max-width: none !important;
+    flex: none !important;
+  }
+
+  .metric-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .run-controls,
+  .run-controls .ant-btn,
+  .mode-select {
+    width: 100%;
+  }
+
+  .metric-list,
+  .signal-grid,
+  .report-cards,
+  .throughput-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-shell,
+  .table-panel {
+    padding: 12px;
+  }
+}

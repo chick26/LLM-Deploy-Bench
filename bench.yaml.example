@@ -1,0 +1,80 @@
+litellm:
+  base_url: "http://127.0.0.1:4000"
+  base_url_env: "LITELLM_BASE_URL"
+  api_key_env: "LITELLM_API_KEY"
+  master_key_env: "LITELLM_MASTER_KEY"
+
+models:
+  chat:
+    - qwen3-32b
+    - qwen3-vl-32b
+    - qwen3.6-27b-npu
+    - qwen3.6-27b
+  embedding:
+    - qwen3-embedding-4b
+  rerank:
+    - qwen3-reranker-4b
+  long_context:
+    - qwen3.6-27b-npu
+    - qwen3.6-27b
+
+profiles:
+  smoke:
+    duration_seconds: 10
+    concurrency_steps: [1]
+    max_output_tokens: 32
+  standard:
+    duration_seconds: 30
+    concurrency_steps: [1, 2, 4, 8, 16]
+    max_output_tokens: 128
+    embedding:
+      duration_seconds: 30
+      concurrency_steps: [1, 2, 4, 8, 16, 32]
+      batch_sizes: [16, 32, 64, 128]
+    rerank:
+      duration_seconds: 30
+      concurrency_steps: [1, 2, 4, 8, 16, 32]
+      document_counts: [16, 32, 64, 100]
+    long_context:
+      token_targets: [8192, 32768, 131072]
+      extreme_token_targets: [262144]
+      concurrency_steps: [1]
+      max_output_tokens: 256
+      request_timeout_seconds: 300
+  max-throughput:
+    duration_seconds: 60
+    concurrency_steps: [1, 2, 4, 8, 16, 32, 64, 128]
+    max_output_tokens: 256
+    embedding:
+      duration_seconds: 60
+      concurrency_steps: [1, 2, 4, 8, 16, 32, 64]
+      batch_sizes: [16, 32, 64, 128]
+    rerank:
+      duration_seconds: 60
+      concurrency_steps: [1, 2, 4, 8, 16, 32, 64]
+      document_counts: [16, 32, 64, 100]
+    long_context:
+      token_targets: [8192, 32768, 131072]
+      extreme_token_targets: [262144]
+      concurrency_steps: [1, 2]
+      max_output_tokens: 512
+      request_timeout_seconds: 600
+
+thresholds:
+  error_rate: 0.05
+  timeout_rate: 0.01
+  p95_e2e_seconds: 120
+  request_timeout_seconds: 180
+
+paddleocr:
+  layout_parsing:
+    - name: paddleocr-vl
+      path: "/layout-parsing"
+      method: POST
+      file: "https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/paddleocr_vl_demo.png"
+      file_type: 1
+      return_markdown_images: false
+      visualize: false
+
+runtime:
+  run_location: "mac"
